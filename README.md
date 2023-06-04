@@ -6,6 +6,8 @@ O propósito deste texto é servir como um utilitário focado especificadamente 
 
 Portanto dessa forma subentende-se que aquele que lê esse documento já possui uma básica noção sobre SQL, que é a linguagens de consulta a banco de dados relacionais.
 
+---
+
 ## Conteúdos abordados neste documento:
 
 1. Functions
@@ -13,7 +15,8 @@ Portanto dessa forma subentende-se que aquele que lê esse documento já possui 
 3. Triggers
 4. Views
 
-### Functions (Funções)
+---
+## Functions (Funções)
 
 Uma function serve como uma forma de realizar o aproveitamento de código, de forma semelhante a programação estruturada.
 
@@ -74,4 +77,5 @@ Dessa forma, sempre que você alterar a função não será necessário remover 
 ---
 
 Para mais exemplos do uso de functions consulte este [repositório](https://github.com/Guilherme-07062002/ProgBancoDeDadosLista1.git)
+
 
