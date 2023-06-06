@@ -84,7 +84,7 @@ Para mais exemplos do uso de functions consulte este [repositório](https://gith
 
 O diferencial do stored procedures para uma function comum é que o procedure não possui retorno. Além disso um procedure deve ser escrito utilizando PLPGSQL.
 
-Sintaxe com SQL
+Sintaxe
 
 ```sql
 CREATE PROCEDURE nome_procedure(parametro tipo_parametro)
@@ -124,3 +124,29 @@ FOR EACH ROW EXECUTE PROCEDURE nome_function();
 ```
 
 ---
+
+## Views
+
+Uma view no postgres seria algo como pegar uma parte isolada de uma tabela e apartir dela criar um conjunto menor, um fragmento ou uma "subtabela".
+
+Sintaxe
+
+```sql
+CREATE VIEW nome_view AS SELECT campo1, campo2 FROM Tabela;
+```
+
+No exemplo acima criamos uma view com o conteúdo do campo1 e campo2 provenientes de um select em Tabela.
+
+Uma View é um objeto que permite a visualização de dados da tabela a qual esteja associada. É criada com base em consultas nas tabelas para selecionar colunas.
+
+Sendo assim, podemos por exemplo realizar uma consulta com base view criada anteriormente.
+
+```sql
+SELECT campo1 FROM nome_view;
+```
+
+Para excluir uma view usamos o seguinte comando:
+
+```sql
+DROP VIEW nome_view;
+```
