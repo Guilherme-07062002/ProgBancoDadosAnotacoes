@@ -133,9 +133,9 @@ Ou seja, ao inserirmos um dado na tabela podemos realizar alguma operação com 
 
 Além disso podemos especificar em que momento a função será executada no trigger.
 
-* BEFORE - A função será executada antes do evento.
-* AFTER - A função será executada após o evento.
-* INSTEAD_OF - Permite utilizar funções para manipulação de dados em Views.
+* `BEFORE` - A função será executada antes do evento.
+* `AFTER` - A função será executada após o evento.
+* `INSTEAD_OF` - Permite utilizar funções para manipulação de dados em Views.
 
 Por fim, após criada a função você deve "instanciá-la", criando o gatilho que será executado, nele você especifica a função que será chamada e a condição que irá dispará-lo.
 
