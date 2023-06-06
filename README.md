@@ -78,6 +78,8 @@ Dessa forma, sempre que você alterar a função não será necessário remover 
 
 Para mais exemplos do uso de functions consulte este [repositório](https://github.com/Guilherme-07062002/ProgBancoDeDadosLista1.git)
 
+---
+
 ## Stored Procedures
 
 O diferencial do stored procedures para uma function comum é que o procedure não possui retorno. Além disso um procedure deve ser escrito utilizando PLPGSQL.
@@ -92,3 +94,33 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 ```
+
+---
+
+## Triggers
+
+A trigger é uma função que será executada quando um determinado evento ocorrer.
+
+Sua estrutura é muito semelhante a criação de um function comum, a diferença é que a função retorna `trigger`.
+
+Então antes de tudo deve-se criar a função que será executada quando o trigger for acionado.
+
+```sql
+CREATE OR REPLACE FUNCTION nome_function( parametro tipo_parametro)
+RETURNS trigger AS $$
+BEGIN
+    -- Código
+END;
+$$ LANGUAGE PLPGSQL;
+```
+
+Após criada a função você deve "instancia-la", criando o gatilho que será executado, nele você especifica a função que será chamada e a condição que irá dispará-lo.
+
+Ou seja, no exemplo abaixo a função será executada após cada inserção que for realizada em *tabela*:
+
+```sql
+CREATE TRIGGER nome_function AFTER INSERT ON tabela
+FOR EACH ROW EXECUTE PROCEDURE nome_function();
+```
+
+---
