@@ -74,7 +74,12 @@ CREATE OR REPLACE FUNCTION
 
 Dessa forma, sempre que você alterar a função não será necessário remover e criá-la novamente pois o proprio postgres atualiza o código da sua função.
 
----
+E para utilizar as funções você pode chamá-las com:
+
+```sql
+SELECT function(parametro);
+```
+
 
 Para mais exemplos do uso de functions consulte este [repositório](https://github.com/Guilherme-07062002/ProgBancoDeDadosLista1.git)
 
@@ -93,6 +98,12 @@ BEGIN
     -- Código
 END;
 $$ LANGUAGE PLPGSQL;
+```
+
+E para utilizar stored procedures você pode chamá-las com:
+
+```sql
+CALL procedure(parametro);
 ```
 
 ---
@@ -114,7 +125,19 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Após criada a função você deve "instancia-la", criando o gatilho que será executado, nele você especifica a função que será chamada e a condição que irá dispará-lo.
+Em triggers existem os objetos: 
+* `OLD` - Por meio dele podemos acessar as propriedades do registro antigo (no caso de um update ou delete, ele armazena o registro antes da modificação).
+* `NEW` - Em contrapartida ao OLD, o **NEW** permite acessar o novo campo que está sendo inserido.
+
+Ou seja, ao inserirmos um dado na tabela podemos realizar alguma operação com o registro anterior por meio do OLD, ou manipular de alguma forma a nova informação recém armazenada por meio do NEW.
+
+Além disso podemos especificar em que momento a função será executada no trigger.
+
+* BEFORE - A função será executada antes do evento.
+* AFTER - A função será executada após o evento.
+* INSTEAD_OF - Permite utilizar funções para manipulação de dados em Views.
+
+Por fim, após criada a função você deve "instanciá-la", criando o gatilho que será executado, nele você especifica a função que será chamada e a condição que irá dispará-lo.
 
 Ou seja, no exemplo abaixo a função será executada após cada inserção que for realizada em *tabela*:
 
@@ -122,6 +145,8 @@ Ou seja, no exemplo abaixo a função será executada após cada inserção que 
 CREATE TRIGGER nome_function AFTER INSERT ON tabela
 FOR EACH ROW EXECUTE PROCEDURE nome_function();
 ```
+
+Você pode especificar qual o evento que irá disparar a trigger, pode ser um INSERT, UPDATE ou DELETE por exemplo.
 
 ---
 
