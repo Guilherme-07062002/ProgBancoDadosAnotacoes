@@ -78,4 +78,17 @@ Dessa forma, sempre que você alterar a função não será necessário remover 
 
 Para mais exemplos do uso de functions consulte este [repositório](https://github.com/Guilherme-07062002/ProgBancoDeDadosLista1.git)
 
+## Stored Procedures
 
+O diferencial do stored procedures para uma function comum é que o procedure não possui retorno. Além disso um procedure deve ser escrito utilizando PLPGSQL.
+
+Sintaxe com SQL
+
+```sql
+CREATE PROCEDURE nome_procedure(parametro tipo_parametro)
+AS $$
+BEGIN
+    -- Código
+END;
+$$ LANGUAGE PLPGSQL;
+```
