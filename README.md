@@ -216,7 +216,7 @@ A declaração é ligada diretamente uma query.
     cur_filme CURSOR FOR SELECT * FROM filme;
     ```
 
-## Exemplo do uso de cursor
+### Exemplo do uso de cursor
 
 ```sql
 CREATE OR REPLACE FUNCTION refAlunos()
@@ -243,7 +243,7 @@ $$LANGUAGE plpgsql;
 SELECT refAlunos();
 ```
 
-## Iterando resultado com `for`
+### Iterando resultado com `for`
 
 ```sql
 CREATE OR REPLACE FUNCTION refAlunos2()
