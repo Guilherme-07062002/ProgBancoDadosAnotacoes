@@ -215,3 +215,30 @@ A declaração é ligada diretamente uma query.
     DECLARE
     cur_filme CURSOR FOR SELECT * FROM filme;
     ```
+
+## Exemplo do uso de cursor
+
+```sql
+CREATE OR REPLACE FUNCTION refAlunos()
+RETURNS void AS $$
+DECLARE
+    exemplo_cursor_alunos CURSOR FOR SELECT * from ALUNOS;
+    aluno alunos%ROWTYPE;
+BEGIN
+    OPEN exemplo_cursor_alunos;
+    
+    FETCH FIRST FROM exemplo_cursor_alunos into aluno;
+    RAISE NOTICE 'Nome: %', aluno.nom_alu;
+
+    FETCH exemplo_cursor_alunos into aluno;
+    RAISE NOTICE 'Nome: %', aluno.nom_alu;
+
+    FETCH LAST FROM exemplo_cursor_alunos into aluno;
+    RAISE NOTICE 'Nome: %', aluno.nom_alu;
+
+    CLOSE exemplo_cursor_alunos;
+END;
+$$LANGUAGE plpgsql;
+
+SELECT refAlunos();
+```
