@@ -8,7 +8,7 @@ Portanto dessa forma subentende-se que aquele que lê esse documento já possui 
 
 ---
 
-## Conteúdos abordados neste documento:
+## Conteúdos abordados neste documento
 
 1. Functions
 2. Stored Procedures
@@ -16,6 +16,7 @@ Portanto dessa forma subentende-se que aquele que lê esse documento já possui 
 4. Views
 
 ---
+
 ## Functions (Funções)
 
 Uma function serve como uma forma de realizar o aproveitamento de código, de forma semelhante a programação estruturada.
@@ -64,7 +65,7 @@ Ou seja por meio do PLPGSQL podemos declarar váriaveis, armazenar valores nelas
 
 ---
 
-**Sugestões**
+## Sugestões
 
 Ao utilizar funções utilize a seguinte notação:
 
@@ -79,7 +80,6 @@ E para utilizar as funções você pode chamá-las com:
 ```sql
 SELECT function(parametro);
 ```
-
 
 Para mais exemplos do uso de functions consulte este [repositório](https://github.com/Guilherme-07062002/ProgBancoDeDadosLista1.git)
 
@@ -125,7 +125,8 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Em triggers existem os objetos: 
+Em triggers existem os objetos:
+
 * `OLD` - Por meio dele podemos acessar as propriedades do registro antigo (no caso de um update ou delete, ele armazena o registro antes da modificação).
 * `NEW` - Em contrapartida ao OLD, o **NEW** permite acessar o novo campo que está sendo inserido.
 
@@ -175,3 +176,42 @@ Para excluir uma view usamos o seguinte comando:
 ```sql
 DROP VIEW nome_view;
 ```
+
+---
+
+## Cursores
+
+Cursores são utilizados para processar uma tupla de cada vez dentro do programa.
+Um cursor pode ser representado através da metáfora de um ponteiro que aponta
+para uma única tupla do resultado de uma consulta que retornou diversas tuplas.
+
+Um Cursor permite encapsular uma query e processar uma tupla por vez. Usa-se
+cursor para dividir um grande result set em partes e processá-las individualmente, evitando
+overflow de memória.
+
+### Declaração de cursores
+
+Há dois tipos de cursores:
+
+* Unbound:
+Todo acesso se dá por meio de uma variável de cursor.
+
+    O PostgreSQL provê um tipo especial - REFCURSOR.
+    Nesse caso a variável pode ser utilizada com qualquer query.
+
+    ```sql
+    DECLARE
+    meu_cursor REFCURSOR;
+    ```
+
+    ---
+* Bound:
+A declaração é ligada diretamente uma query.
+
+    Para ter acesso ao cursor é necessário declarar uma variável, mas nesse caso a variável
+    está ligada (bound) a uma query especificada.
+
+    ```sql
+    DECLARE
+    cur_filme CURSOR FOR SELECT * FROM filme;
+    ```
