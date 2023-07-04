@@ -226,7 +226,7 @@ DECLARE
     aluno alunos%ROWTYPE;
 BEGIN
     OPEN exemplo_cursor_alunos;
-    
+
     FETCH FIRST FROM exemplo_cursor_alunos into aluno;
     RAISE NOTICE 'Nome: %', aluno.nom_alu;
 
@@ -241,4 +241,21 @@ END;
 $$LANGUAGE plpgsql;
 
 SELECT refAlunos();
+```
+
+## Iterando resultado com `for`
+
+```sql
+CREATE OR REPLACE FUNCTION refAlunos2()
+RETURNS void AS $$
+DECLARE
+    exemplo_cursor_alunos CURSOR FOR SELECT * from ALUNOS;
+BEGIN
+    FOR aluno IN exemplo_cursor_alunos LOOP
+    RAISE NOTICE 'Nome: %', aluno.nom_alu;
+    END LOOP;
+END;
+$$LANGUAGE plpgsql;
+
+SELECT refAlunos2();
 ```
