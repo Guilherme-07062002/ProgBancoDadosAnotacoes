@@ -14,6 +14,8 @@ Portanto dessa forma subentende-se que aquele que lê esse documento já possui 
 2. Stored Procedures
 3. Triggers
 4. Views
+5. Cursores
+6. Isolamento de Transações
 
 ---
 
@@ -259,3 +261,25 @@ $$LANGUAGE plpgsql;
 
 SELECT refAlunos2();
 ```
+
+---
+
+## Transaction Isolation (Isolamento de Transações)
+
+Imagine o cenário de uma aplicação com um grande número de usuários. É esperado que, em determinado momento haja um número considerável de requisições ao servidor que sustenta esse sistema.
+
+Com isso, é necessário que o SGBD responsável pela base de dados, saiba como lidar a essa grande quantidade de `transações`.
+
+*Uma transação nada mais é do que o processo de transacionar, ou seja efetuar uma comunicação entre duas partes, aonde ocorre uma `troca` de dados/informações.*
+
+Dessa forma, surge o seguinte questionamento:
+
+O que acontece se o usuário João alterar os dados de um banco ao mesmo tempo que José realiza uma consulta com o intuito de retornar esses dados?
+
+* Vai dar erro?
+* José vai pegar os dados já alterados? Ou a consulta vai retornar os dados antes da atualização?
+* João vai conseguir de fato alterar os dados?
+
+E graças a esses questionamentos, surge o conceito de `Isolamento de Transação`.
+
+Ou seja, essa troca deve ocorrer de forma isolada, seguindo diferentes comportamentos de acordo com o contexto em que a transação acontece, para que não ocorram problemas de inconsistência nesses dados.
