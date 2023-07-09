@@ -16,6 +16,7 @@ Portanto dessa forma subentende-se que aquele que lê esse documento já possui 
 4. Views
 5. Cursores
 6. Isolamento de Transações
+7. Backup e Restauração
 
 ---
 
@@ -329,3 +330,25 @@ Os níveis de isolamento da transação são a medida da qual o isolamento da tr
 * Leitura repetida - A transação garantirá que enquanto uma query estiver lendo uma linha, ela permanecerá igual enquanto estiver sendo executada.
 
 * Serializável - Esse o nível mais bruto. As transações serão executadas uma após a outra, ao invés de concorrentes.
+
+## Backup e Restauração
+
+### SQL DUMP
+
+A idéia por trás do `DUMP` é gerar um arquivo SQL com os comandos necessários para gerar a estrutura de um determinado screenshot de um banco de dados.
+
+O uso básico desse comando é:
+
+```shell
+pg_dump nome_db>arquivo_dump
+```
+
+Além de SQL, um dump pode gerar um arquivo com diferentes formatos, que seu uso varia dependendo do contexto.
+
+Dessa forma, ao se realizar um backup de um banco de dados, o que é feito por baixo dos panos nada mais é do que gerar um arquivo com todas as instruções necessárias para que um SGBD consiga recriar, a estrutura de um banco com todos os dados do momento em que foi feito o backup.
+
+A importância do backup é de fato criar um cópia do banco de dados, ou seja, em caso de alguma falha na base original, é so restaurar o backup e os dados serão restaurados.
+
+Mas tem um porém, os dados só serão restaurados até o ponto em que o backup foi feito, se mais alguma informação foi adicionada depois disso, é bem provável que ela será perdida.
+
+Graças a isso, dependendo das politicas de administração da empresa ou equipe que rege determinado banco de dados, o backup é realizado regularmente, com o intuito de amenizar a possivel perda de dados em caso de falha.
