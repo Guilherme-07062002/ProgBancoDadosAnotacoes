@@ -272,6 +272,10 @@ Com isso, é necessário que o SGBD responsável pela base de dados, saiba como 
 
 *Uma transação nada mais é do que o processo de transacionar, ou seja efetuar uma comunicação entre duas partes, aonde ocorre uma `troca` de dados/informações.*
 
+Também pode ser ententido como um conjunto de operações(queries) tratadas como apenas uma.
+
+Ex: você precisa fazer um INSERT em uma conta bancária e depois um UPDATE. Essas 2 operações só ficarão permanentes no banco de dados se ambos forem executadas com sucesso.
+
 Dessa forma, surge o seguinte questionamento:
 
 O que acontece se o usuário João alterar os dados de um banco ao mesmo tempo que José realiza uma consulta com o intuito de retornar esses dados?
@@ -300,3 +304,16 @@ Dessa forma falando sobre cada letra:
 Portanto com base nesses quatro princípios é estabelecido um contrato que todas as transações devem obedecer.
 
 No caso de agora estamos discutindo sobre a letra I do ACID, o `Isolamento`, e como o Sistema de Gerenciamento do Banco de Dados consegue isolar cada transação concorrente, de forma que não ocorram colisões.
+
+### Níveis de Isolamento
+
+[Para mais detalhes, leia esse artigo](https://www.tabnews.com.br/allangrds/diario-fullstack-3-iniciando-meus-estudos-em-banco-de-dados-e-entendendo-acid)
+
+Por padrão o SQL define quatro níveis de isolamento, o mais restrito e seguro entre eles é o serializable, e os outros são alternativas de se lidar com fenômenos que ocorrem devido a transações concorrentes no banco de dados.
+
+Esses fenômenos são:
+
+* Dirty read (Leitura suja) - A transação lê dados de outra concorrente, que ainda não foi commitada;
+* Nonrepeatable read (Leitura não repetível) - A transação relê os dados que já foram lidos e observa qual deles foram alterados por outra transação;
+* Phantom read (Leitura fantasma) - A transação retorna um conjunto de dados que já foi alterado ou deletado, ou seja dados fantasmas, que não existem mais.
+* Serialization anomaly (Anomalia de serialização) - Este fênomeno acontece quando um grupo de transações concorrentes e comitadas simultaneamente tem seus resultados sobrepostos uma a outra.
