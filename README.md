@@ -283,3 +283,20 @@ O que acontece se o usuário João alterar os dados de um banco ao mesmo tempo q
 E graças a esses questionamentos, surge o conceito de `Isolamento de Transação`.
 
 Ou seja, essa troca deve ocorrer de forma isolada, seguindo diferentes comportamentos de acordo com o contexto em que a transação acontece, para que não ocorram problemas de inconsistência nesses dados.
+
+### Principios ACID
+
+![ACID](./imgs/acid.png)
+
+Em uma transação de um banco de dados é recomendável que ela obedeça aos principios estabelecidos pela sigla ACID.
+
+Dessa forma falando sobre cada letra:
+
+* Atomicidade - A transação uma vez que é iniciada, deve ir até o fim ou então é cancelada;
+* Consistência - Apenas dados válidos são salvos;
+* Isolamento - Uma transação não sofre interferência de outra transação concorrente;
+* Durabilidade - O que é salvo não será perdido;
+
+Portanto com base nesses quatro princípios é estabelecido um contrato que todas as transações devem obedecer.
+
+No caso de agora estamos discutindo sobre a letra I do ACID, o `Isolamento`, e como o Sistema de Gerenciamento do Banco de Dados consegue isolar cada transação concorrente, de forma que não ocorram colisões.
