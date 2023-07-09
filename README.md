@@ -352,3 +352,11 @@ A importância do backup é de fato criar um cópia do banco de dados, ou seja, 
 Mas tem um porém, os dados só serão restaurados até o ponto em que o backup foi feito, se mais alguma informação foi adicionada depois disso, é bem provável que ela será perdida.
 
 Graças a isso, dependendo das politicas de administração da empresa ou equipe que rege determinado banco de dados, o backup é realizado regularmente, com o intuito de amenizar a possivel perda de dados em caso de falha.
+
+## Balanceamento de carga e alta disponibilidade
+
+Os servidores de banco de dados podem trabalhar juntos para permitir que um segundo servidor assuma rapidamente se o servidor principal falhar (alta disponibilidade) ou para permitir que vários computadores forneçam os mesmos dados (balanceamento de carga).
+
+Infelizmente, a maioria dos servidores de banco de dados tem uma combinação de solicitações de leitura/gravação, e os servidores de leitura/gravação são muito mais difíceis de combinar. Isso ocorre porque, embora os dados somente leitura precisem ser colocados em cada servidor apenas uma vez, uma gravação em qualquer servidor deve ser propagada para todos os servidores para que futuras solicitações de leitura para esses servidores retornem resultados consistentes.
+
+Esse problema de sincronização é a dificuldade fundamental para servidores trabalhando juntos. Como não existe uma solução única que elimine o impacto do problema de sincronização para todos os casos de uso, existem várias soluções. Cada solução aborda esse problema de uma maneira diferente e minimiza seu impacto para uma carga de trabalho específica.
