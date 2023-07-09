@@ -317,3 +317,15 @@ Esses fenômenos são:
 * Nonrepeatable read (Leitura não repetível) - A transação relê os dados que já foram lidos e observa qual deles foram alterados por outra transação;
 * Phantom read (Leitura fantasma) - A transação retorna um conjunto de dados que já foi alterado ou deletado, ou seja dados fantasmas, que não existem mais.
 * Serialization anomaly (Anomalia de serialização) - Este fênomeno acontece quando um grupo de transações concorrentes e comitadas simultaneamente tem seus resultados sobrepostos uma a outra.
+
+### Níveis de isolamento
+
+Os níveis de isolamento da transação são a medida da qual o isolamento da transação é executado com sucesso. Cada nível de isolamento é definido pela presença de nenhum, um ou mais fenômenos, sendo eles:
+
+* Leitura não comitada - Sem isolamento. Qualquer mudança, comitada ou não, poderá ser vista na transação.
+
+* Leitura comitada - As queries de uma transação só enxergam o que foi comitado por outras transações.
+
+* Leitura repetida - A transação garantirá que enquanto uma query estiver lendo uma linha, ela permanecerá igual enquanto estiver sendo executada.
+
+* Serializável - Esse o nível mais bruto. As transações serão executadas uma após a outra, ao invés de concorrentes.
