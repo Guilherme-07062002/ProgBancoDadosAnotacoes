@@ -17,6 +17,7 @@ Portanto dessa forma subentende-se que aquele que lê esse documento já possui 
 5. Cursores
 6. Isolamento de Transações
 7. Backup e Restauração
+8. Balanceamento de Carga e Alta Disponibilidade
 
 ---
 
